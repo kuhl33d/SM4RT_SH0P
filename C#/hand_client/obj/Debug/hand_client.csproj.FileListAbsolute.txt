@@ -1,0 +1,18 @@
+D:\.MSA\CS484_hci\task0\hand_client\bin\Debug\hand_client.exe.config
+D:\.MSA\CS484_hci\task0\hand_client\bin\Debug\hand_client.exe
+D:\.MSA\CS484_hci\task0\hand_client\bin\Debug\hand_client.pdb
+D:\.MSA\CS484_hci\task0\hand_client\obj\Debug\hand_client.csproj.AssemblyReference.cache
+D:\.MSA\CS484_hci\task0\hand_client\obj\Debug\hand_client.Properties.Resources.resources
+D:\.MSA\CS484_hci\task0\hand_client\obj\Debug\hand_client.csproj.GenerateResource.cache
+D:\.MSA\CS484_hci\task0\hand_client\obj\Debug\hand_client.csproj.CoreCompileInputs.cache
+D:\.MSA\CS484_hci\task0\hand_client\obj\Debug\hand_client.exe
+D:\.MSA\CS484_hci\task0\hand_client\obj\Debug\hand_client.pdb
+D:\.MSA\CS484_hci\phase 1\final\C#\hand_client\bin\Debug\hand_client.exe.config
+D:\.MSA\CS484_hci\phase 1\final\C#\hand_client\bin\Debug\hand_client.exe
+D:\.MSA\CS484_hci\phase 1\final\C#\hand_client\bin\Debug\hand_client.pdb
+D:\.MSA\CS484_hci\phase 1\final\C#\hand_client\obj\Debug\hand_client.csproj.AssemblyReference.cache
+D:\.MSA\CS484_hci\phase 1\final\C#\hand_client\obj\Debug\hand_client.Properties.Resources.resources
+D:\.MSA\CS484_hci\phase 1\final\C#\hand_client\obj\Debug\hand_client.csproj.GenerateResource.cache
+D:\.MSA\CS484_hci\phase 1\final\C#\hand_client\obj\Debug\hand_client.csproj.CoreCompileInputs.cache
+D:\.MSA\CS484_hci\phase 1\final\C#\hand_client\obj\Debug\hand_client.exe
+D:\.MSA\CS484_hci\phase 1\final\C#\hand_client\obj\Debug\hand_client.pdb
