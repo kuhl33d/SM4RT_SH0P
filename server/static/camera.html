@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ArUco Marker Detection</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        let currentStream = null;
+        let facingMode = "user"; // Default to the user-facing camera
+
+        function stopCurrentStream() {
+            if (currentStream) {
+                currentStream.getTracks().forEach(track => track.stop());
+            }
+        }
+
+        function switchCamera() {
+            facingMode = facingMode === "user" ? "environment" : "user";
+            startStream();
+        }
+
+        function startStream() {
+            stopCurrentStream();
+
+            const constraints = {
+                video: { 
+                    facingMode: facingMode
+                },
+                audio: false
+            };
+
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(function(stream) {
+                    currentStream = stream;
+                    const video = document.querySelector('#videoElement');
+                    video.srcObject = stream;
+                })
+                .catch(function(err) {
+                    console.error("An error occurred: ", err);
+                });
+        }
+
+        window.onload = function() {
+            var socket = io.connect('https://' + document.domain + ':' + location.port, {withCredentials: true});
+            
+            startStream(); // Start the stream with default settings
+
+            const video = document.querySelector('#videoElement');
+            video.addEventListener('play', function() {
+                const canvas = document.createElement('canvas');
+                setInterval(function() {
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                    const data = canvas.toDataURL('image/jpeg');
+                    socket.emit('image', { data: data });
+                }, 100); // Adjust the interval as needed
+            });
+
+            document.getElementById('switchCameraButton').addEventListener('click', switchCamera);
+        };
+    </script>
+</head>
+<body>
+    <video id="videoElement" autoplay="true"></video>
+    <button id="switchCameraButton">Switch Camera</button>
+</body>
+</html>

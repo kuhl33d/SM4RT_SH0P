@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ArUco Marker Detection</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        window.onload = function() {
+            var socket = io.connect('https://' + document.domain + ':' + location.port, {withCredentials: true});
+            var video = document.querySelector('#videoElement');
+
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.play(); // Ensure video plays
+                })
+                .catch(function(err) {
+                    console.log("An error occurred: " + err);
+                });
+
+            video.addEventListener('play', function() {
+                var canvas = document.createElement('canvas');
+                setInterval(function() {
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                    var data = canvas.toDataURL('image/jpeg');
+                    socket.emit('image', { data: data });
+                }, 100); // Adjust the interval as needed
+            });
+        };
+    </script>
+</head>
+<body>
+    <video id="videoElement" autoplay="true"></video>
+</body>
+</html>
